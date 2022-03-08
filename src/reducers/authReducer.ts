@@ -1,28 +1,45 @@
+import { IUser } from '../interfaces/index';
 
 interface AuthState {
-    user:  string | null ;
-    jwt?: string; 
+    user:  IUser | null;
+    checking: boolean 
 }
 
 const initialState: AuthState = {
-    user: null
+    user: null,
+    checking: true
 }
 
 
-type authType = { type: 'login' , payload: { user: string , jwt: string } }|
-                {type:'logout'}
+type authType = { type: 'login' , payload: IUser }|
+                {type:'logout'}|
+                {type:'startChecking'}|
+                {type:'finishChecking'}
 
 
-export const authReducer = ( state = initialState, action : authType ) =>{
+export const authReducer = ( state = initialState, action : authType ) : AuthState =>{
 
     switch (action.type) {
         case 'login':
             return { 
                 ...state,
-                ...action.payload
+                user: action.payload
+            }
+        case 'startChecking':
+            return{ 
+                ...state,
+                checking:true
+            }
+        case 'finishChecking':
+            return{ 
+                ...state,
+                checking: false
             }
         case 'logout':
-            return initialState;
+            return {
+                checking: false,
+                user: null
+            };
 
         default:
             return state;

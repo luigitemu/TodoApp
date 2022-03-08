@@ -1,0 +1,60 @@
+#sidebar {
+	display: flex;
+	flex-direction: column;
+	min-width: 300px;
+	background-color: #ffffff;
+	color: #2b2751;
+	border-right: 1px solid #ebebeb;
+}
+
+.sidebar__logout-button {
+	position: absolute;
+    bottom: 0%;
+    padding: 1rem;
+    color: #001f3f;
+    min-width: 300px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    font-size: 17px;
+    outline: none;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	border: 1px solid transparent;
+	background: #f1f1f1;
+}
+
+.sidebar__logout-button:hover {
+	cursor: pointer;
+    color: #ffffff;
+    background-color: #000842;
+    border: 3px solid white;
+	border-radius: 8px;
+}
+
+.sidebar__logout-label {
+	margin-right: 0.5rem;
+}
+
+.sidebar__notes-list {
+	display: flex;
+	flex-direction: column;
+	margin: 28px 12px;
+}
+
+.sidebar__note-item {
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem 2rem;
+	border-bottom: 1px solid #4338561a;
+}
+
+.sidebar__note-item-name {
+	width: 11.5rem;
+}
+
+.sidebar__note-item-icon {
+	place-self: center;
+}

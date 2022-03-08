@@ -27,18 +27,7 @@
 	overflow: auto;
 }
 
-.flex__container-bg-blue {
-	width: 50%;
-	display: flex;
-	justify-content: center;
-	background-color: #000842;
-	margin: 1.1rem;
-	border-radius: 15px;
-}
 
-.flex__container-blue-background {
-	margin: 10px !important;
-}
 
 /* --------------------------------------------------------------- */
 .login__container-form-login {
@@ -93,9 +82,7 @@
 	border-bottom: 1px solid #0C21C1;
 }
 
-.image_dude {
-	color: white;
-}
+
 
 .login__button-active, .login__button-disabled {
 	display: block;

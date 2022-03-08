@@ -6,6 +6,7 @@ import { fakeAuthProvider } from "./auth";
 import { RouterPage } from "./router/RouterPage";
 
 export default function App() {
+  
   return (
     <Provider store={store}>
       {/* <AuthProvider> */}

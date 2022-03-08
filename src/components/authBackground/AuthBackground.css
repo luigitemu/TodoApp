@@ -1,0 +1,16 @@
+.flex__container-bg-blue {
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	background-color: #000842;
+	margin: 1.1rem;
+	border-radius: 15px;
+}
+
+.flex__container-blue-background {
+	margin: 10px !important;
+}
+
+.image_dude {
+	color: white;
+}
