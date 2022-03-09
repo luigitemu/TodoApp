@@ -10,8 +10,19 @@
     font-size: 20px;
     font-weight: 600;
     padding-bottom: 0.8rem;
-    margin-bottom: 2rem;
-    border-bottom: 1px solid gainsboro;
+    margin-right: 0.7rem;
+}
+.content__note-title-input{
+    border: 0;
+    background-color: #F7F8FA;
+    padding: 1rem;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 8px;
+}
+.content__divider{
+    border: 0;
+    border-bottom: 1px solid gainsboro;;
 }
 
 .content__note-list-container {
@@ -20,6 +31,35 @@
     flex-wrap: wrap;
     gap: 2rem;
 }
+.content__note-list-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+.content__note-list-header svg{
+    padding-top: 0px;
+    font-size: 25px;
+}
+
+.content__note-list-header button{
+    background-color: #643FDB;
+    color: #F0F1F3;
+    font-size: 25px;
+    text-align: center;
+    font-weight: 600;
+    width: 25px;
+    height: 25px;
+    border: 0;
+    border-radius: 5px;
+    margin-right: 4px;
+    margin-bottom: 6px;
+}
+.content__note-list-header button:hover{
+    background-color: #5228da;
+    /* border: 1px solid #643FDB; */
+    cursor: pointer;
+}
+
 
 .content__note-list-title {
     color: #343348;
@@ -39,6 +79,9 @@
     padding: 4px 12px;
     margin: 6px 0px;
     border-radius: 4px;
+}
+.content__note-list-item:hover{
+    box-shadow: 0 0 11px rgba(48, 48, 48, 0.2); 
 }
 
 .content__todo-check {

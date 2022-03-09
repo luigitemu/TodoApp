@@ -1,63 +1,101 @@
-import React from 'react'
+import React, { useRef, useState } from 'react';
+import CTE from "react-click-to-edit";
+import { useSelector, useDispatch } from 'react-redux';
+import {IoIosAdd } from 'react-icons/io'
+import {MdModeEdit } from 'react-icons/md'
+
 import "./Content.css"
+import { RootState } from '../../reducers/rootReducer';
+import { startUpdatingNote } from '../../action/notes';
+import { EditableInput } from '../EditableInput';
 
 export const Content = () => {
+  const {activeNote} = useSelector( (state:RootState) => state.notes);
+  const [title, setTitle] = useState(activeNote?.title)
+  const dispatch = useDispatch();
+
+  const handleOnChange = (e: any ) : void => {
+    const {id } = e.target;
+    
+    const newNote = activeNote!;
+    newNote.todos = newNote.todos.map(todo => todo._id === id ? {...todo, isDone: !todo.isDone}: todo );
+    dispatch(startUpdatingNote(newNote._id!, newNote));
+  
+    }
+  const handleAddTodo = ():void => { 
+    const newTodo = {isDone: false, name:'new todo' };
+    const newNote = activeNote!;
+    newNote.todos =  [...newNote.todos , newTodo ];
+    dispatch(startUpdatingNote(newNote._id!, newNote));
+   }
+
+   const handleEditTitle = (e:any) => {
+     const title = e.target.value; 
+     if(title === '') return ;
+     const newNote = activeNote!;
+     newNote.title = title;
+     dispatch(startUpdatingNote(newNote._id!, newNote))
+    }
+    const inputRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
+  
+   if(!activeNote){
+     return( <h1> Select a Note</h1>)
+   }
   return (
     <main id='content'>
-        <div className='content__note-title'>Pitch Video</div>
+          <div>
+            <span style={{ display: 'flex', flexDirection:'row' }}>
+              <EditableInput
+                text={activeNote.title} 
+                type={'div'} 
+                placeholder={title!}
+                className='content__note-title'         
+                childRef={inputRef}
+                >
+              <input 
+              ref={inputRef} 
+              className='content__note-title-input' 
+              type='text' 
+              value={title} 
+              onBlur={handleEditTitle}
+              ></input>     
+
+              </EditableInput>
+              <MdModeEdit style={{ marginTop: 5 }}/>
+            </span>
+          </div>
+          <hr className='content__divider' />
+          <br />
         <div className='content__note-list-container'>
             <div>
+              <div className='content__note-list-header'>
                 <div className="content__note-list-title">Pending</div>
+                {/* <div className="content__note-list-title">Pending</div>
+                 */}
+                 <button onClick={handleAddTodo}> <IoIosAdd/> </button>
+              </div>
                 <div className='content__note-list-colum'>
-                  <div className="content__note-list-item">
-                    <input type="checkbox" name="b-1" id="b-1" className='content__todo-check' />
-                    <label htmlFor="b-1">Animated</label>
+                  {activeNote?.todos.filter(todo => !todo.isDone).map((todo, idx)=>(
+                  <div className="content__note-list-item" key={`${todo.name}-${idx}`}>
+
+                    <input type="checkbox" checked={todo.isDone} onChange={handleOnChange}  name={todo._id} id={todo._id} className='content__todo-check' />
+                    <label htmlFor={todo._id}>{todo.name}</label>
+                    
                   </div>
-                  <div className="content__note-list-item">
-                    <input type="checkbox" name="b-2" id="b-2" className='content__todo-check' />
-                    <label htmlFor="b-2">User story</label>
-                  </div>
-                  <div className="content__note-list-item">
-                    <input type="checkbox" name="b-3" id="b-3" className='content__todo-check' />
-                    <label htmlFor="b-3">Animate video</label>
-                  </div>
+                  ))}
+
                 </div>
             </div>
             <div>
                 <div className="content__note-list-title">Completed</div>
                 <div className='content__note-list-colum'>
-                  <div className='content__note-list-item'>
-                    <input type="checkbox" name="a-1" id="a-1" />
-                    <label htmlFor='a-1'>Finalize story board</label>
+                {activeNote?.todos.filter(todo => todo.isDone).map(todo=>(
+                  <div className="content__note-list-item" key={todo._id}>
+                    <input type="checkbox" checked={todo.isDone}  name={todo._id} id={todo._id} onChange={handleOnChange} className='content__todo-check' />
+                    
+                    <label htmlFor={todo._id}>{todo.name}</label>
                   </div>
-                  <div className='content__note-list-item'>
-                    <input type="checkbox" name="a-2" id="a-2" />
-                    <label htmlFor='a-2'>Taking heads</label>
-                  </div>
-                  <div className='content__note-list-item'>
-                    <input type="checkbox" name="a-3" id="a-3" />
-                    <label htmlFor='a-3'>Final cut</label>
-                  </div>
-                  <div className='content__note-list-item'>
-                    <input type="checkbox" name="a-4" id="a-4" />
-                    <label htmlFor='a-4'>Ask Ana for feedback</label>
-                  </div>
-                  <div className='content__note-list-item'>
-                    <input type="checkbox" name="a-5" id="a-5" />
-                    <label htmlFor='a-5'>Create thumbnail</label>
-                  </div>
-                  <div className='content__note-list-item'>
-                    <input type="checkbox" name="a-6" id="a-6" />
-                    <label htmlFor='a-6'>publish to youtube</label>
-                  </div>
-                  <div className='content__note-list-item'>
-                    <input type="checkbox" name="a-7" id="a-7" />
-                    <label htmlFor='a-7'>Finalize story board</label>
-                  </div>
-                  <div className='content__note-list-item'>
-                    <input type="checkbox" name="a-8" id="a-8" />
-                    <label htmlFor='a-8'>Finalize story board</label>
-                  </div>
+                  ))}
                 </div>
             </div>
         </div>

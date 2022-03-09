@@ -42,6 +42,8 @@
 	display: flex;
 	flex-direction: column;
 	margin: 28px 12px;
+	height: 80vh;
+	overflow-y: scroll;
 }
 
 .sidebar__note-item {

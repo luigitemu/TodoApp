@@ -1,6 +1,6 @@
-// const baseUrl = process.env.REACT_APP_API_URL;
-// const baseUrl: string = import.meta.env.REACT_APP_API_URL as string ;
-const baseUrl: string = "http://localhost:8080/api";
+
+const baseUrl: string = import.meta.env.VITE_REACT_APP_API_URL as string ;
+
 
 
 export const fetchWithOutToken = (endpoint: string, data: any, method = 'GET') => {
