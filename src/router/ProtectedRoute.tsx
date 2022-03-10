@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { useSelector } from 'react-redux';
 import { useLocation, Navigate } from 'react-router-dom';
-import { AuthContext } from '../App';
 import { RootState } from '../reducers/rootReducer';
 
 export const ProtectedRoute = ( {children} : { children: JSX.Element}) => {
