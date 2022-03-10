@@ -29,7 +29,7 @@
 .sidebar__logout-button:hover {
 	cursor: pointer;
     color: #ffffff;
-    background-color: #000842;
+	background-color: #643fdb;
     border: 3px solid white;
 	border-radius: 8px;
 }

@@ -1,7 +1,32 @@
+.no-data-container {
+    position: relative;
+    width: -webkit-fill-available;
+    overflow: hidden;
+}
+
+.no-data-title {    
+    position: absolute;
+    width: -webkit-fill-available;
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+    font-size: 25px;
+    font-weight: 700;
+    color: #6a6c7e;
+}
+
+.no-data-img {
+    width: -webkit-fill-available;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #content{
     flex-grow: 1;
-    background-color: #F7F8FA;
-    /* background-color: #f1f1f1; */
+    /* background-color: #F7F8FA; */
+    background-color: #ffffff;
     padding: 2rem 4rem;
 }
 
@@ -9,9 +34,18 @@
     color: #643FDB;
     font-size: 20px;
     font-weight: 600;
-    padding-bottom: 0.8rem;
     margin-right: 0.7rem;
+    margin-bottom: 12px;
+    padding-left: 5px;
 }
+
+.content__note-title:hover {
+    border: 1px solid #cccccc;
+    padding: 0 18px;
+    border-radius: 8px;
+    padding-left: 5px;
+}
+
 .content__note-title-input{
     border: 0;
     background-color: #F7F8FA;
@@ -20,6 +54,13 @@
     font-weight: 600;
     padding: 8px;
 }
+
+.content__note-title-input:focus-visible {
+    border: transparent;
+    outline: transparent;
+    background: transparent !important;
+}
+
 .content__divider{
     border: 0;
     border-bottom: 1px solid gainsboro;;
@@ -31,6 +72,7 @@
     flex-wrap: wrap;
     gap: 2rem;
 }
+
 .content__note-list-header{
     display: flex;
     flex-direction: row;
@@ -98,15 +140,39 @@
     background-color: #f97474;
     color: white;
 }
+
+.button__edit, .button__delete {
+    width: 2rem;
+}
+
 .button__edit:hover{
-    background-color: #abfa95;
+    background-color: #59b782;
+    color: white;
 }
 .content__note-list-item:hover{
-    box-shadow: 0 0 11px rgba(48, 48, 48, 0.2); 
+    box-shadow: 5px 4px 11px rgb(209 209 209 / 91%);
 }
 
 .content__todo-check {
     margin-right: 8px;
+}
+
+.btn-font-size {
+    font-size: 20px;
+}
+
+.note-list-text {
+    width: 75%;
+    display: flex;
+    align-items: center;
+}
+
+input[type=checkbox] {
+    transform: scale(1.5);
+}
+
+.content__note-list-buttons {
+    text-align: -webkit-center;
 }
 
 @media screen and (max-width: 1024px) {
