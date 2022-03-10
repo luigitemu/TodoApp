@@ -1,17 +1,21 @@
 import React, { useRef, useState } from 'react';
-import CTE from "react-click-to-edit";
 import { useSelector, useDispatch } from 'react-redux';
+import Modal from 'react-modal';
 import {IoIosAdd } from 'react-icons/io'
 import {MdModeEdit } from 'react-icons/md'
 
 import "./Content.css"
 import { RootState } from '../../reducers/rootReducer';
-import { startUpdatingNote } from '../../action/notes';
+import { startUpdatingNote, setActiveTodo } from '../../action/notes';
 import { EditableInput } from '../EditableInput';
+import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai';
+import { CustomModal } from '../modal/CustomModal';
 
 export const Content = () => {
-  const {activeNote} = useSelector( (state:RootState) => state.notes);
-  const [title, setTitle] = useState(activeNote?.title)
+  const {activeNote, activeTodo} = useSelector( (state:RootState) => state.notes);
+  const [title, setTitle] = useState(activeNote?.title);
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+  
   const dispatch = useDispatch();
 
   const handleOnChange = (e: any ) : void => {
@@ -29,17 +33,35 @@ export const Content = () => {
     dispatch(startUpdatingNote(newNote._id!, newNote));
    }
 
-   const handleEditTitle = (e:any) => {
+  const handleEditTitle = (e:any) => {
      const title = e.target.value; 
      if(title === '') return ;
      const newNote = activeNote!;
      newNote.title = title;
      dispatch(startUpdatingNote(newNote._id!, newNote))
     }
-    const inputRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
+  const handleDeleteTodo = (id: string) => { 
+      const noteUpdate = activeNote!
+      console.log(noteUpdate.todos)
+      noteUpdate.todos = noteUpdate.todos.filter(todo => todo._id !== id   );
+      dispatch(startUpdatingNote(noteUpdate._id!, noteUpdate)) 
+      
+
+    }
+
+  const handleEditTodo = (todo:any )=>{
+    setIsOpen(true);
+    dispatch(setActiveTodo(todo))
+  }
+
+    const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+
   
    if(!activeNote){
-     return( <h1> Select a Note</h1>)
+     return(
+     <>
+      <img src='../../assets/noimage.jpg' />
+     </>)
    }
   return (
     <main id='content'>
@@ -74,12 +96,28 @@ export const Content = () => {
                  */}
                  <button onClick={handleAddTodo}> <IoIosAdd/> </button>
               </div>
+              
                 <div className='content__note-list-colum'>
+                {activeNote.todos.length === 0 && 
+                <>
+                  <h4>Add a new Note</h4>
+                </>}
                   {activeNote?.todos.filter(todo => !todo.isDone).map((todo, idx)=>(
                   <div className="content__note-list-item" key={`${todo.name}-${idx}`}>
 
                     <input type="checkbox" checked={todo.isDone} onChange={handleOnChange}  name={todo._id} id={todo._id} className='content__todo-check' />
                     <label htmlFor={todo._id}>{todo.name}</label>
+                    <div className='content__note-list-buttons'>
+                      <button 
+                      className='button__delete' 
+                      onClick={()=>handleDeleteTodo(todo._id)}
+                      > <AiOutlineDelete/> </button>
+                      <button 
+                      className='button__edit' 
+                      onClick={()=>handleEditTodo(todo)}
+                      > <AiOutlineEdit/> </button>
+
+                    </div>
                     
                   </div>
                   ))}
@@ -99,6 +137,7 @@ export const Content = () => {
                 </div>
             </div>
         </div>
+        <CustomModal isOpen={modalIsOpen} closeModal={setIsOpen} title={activeTodo?.title} />
     </main>
   )
 }

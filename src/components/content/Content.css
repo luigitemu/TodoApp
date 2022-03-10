@@ -75,10 +75,31 @@
 }
 
 .content__note-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
     background: white;
     padding: 4px 12px;
     margin: 6px 0px;
     border-radius: 4px;
+}
+.content__note-list-item button{
+    margin: 0.1rem 0.3rem;
+    padding: 0.3rem;
+    border: 1px ;
+    border-radius: 5px;
+
+}
+.content__note-list-item button:hover{
+    cursor: pointer;
+}
+.button__delete:hover{
+    background-color: #f97474;
+    color: white;
+}
+.button__edit:hover{
+    background-color: #abfa95;
 }
 .content__note-list-item:hover{
     box-shadow: 0 0 11px rgba(48, 48, 48, 0.2); 
@@ -86,4 +107,17 @@
 
 .content__todo-check {
     margin-right: 8px;
+}
+
+@media screen and (max-width: 1024px) {
+    .content__note-list-container {
+        flex-direction: column;
+    }
+    .content__note-list-colum{
+        width: 80vw;
+    }
+    .content__note-list-header button{
+        margin-right: 2rem;
+    }
+    
 }

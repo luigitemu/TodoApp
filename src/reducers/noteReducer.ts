@@ -9,15 +9,18 @@ export interface Note  {
 interface NoteState {
     notes: Array<Note> | [];
     activeNote: Note | null;
+    activeTodo: any | null;
 }
 
 const initialState: NoteState = {
     notes: [],
-    activeNote: null
+    activeNote: null,
+    activeTodo: null
 }
 
 type noteType = {type: 'loadNotes', payload: [] }|
                 {type: 'setActiveNote', payload: Note}|
+                {type: 'setActiveTodo', payload: any}|
                 {type: 'addNewNote', payload: Note}|
                 {type: 'updateNote', payload: Note}|
                 {type: 'deleteNote', payload: string}
@@ -35,6 +38,11 @@ export const noteReducer = ( state = initialState, action : noteType ) : NoteSta
             return {
                 ...state,
                 activeNote: {...action.payload}
+            }
+        case 'setActiveTodo':
+            return {
+                ...state,
+                activeTodo: {...action.payload}
             }
         case 'addNewNote':
             return {

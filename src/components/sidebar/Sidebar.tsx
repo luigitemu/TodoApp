@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { AiOutlineFileAdd } from "react-icons/ai";
+import { AiOutlineDelete, AiOutlineFileAdd } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
 import { IoOpenOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from 'react-redux';
@@ -40,12 +40,16 @@ export const Sidebar = () => {
     <aside id='sidebar'>
       
       <div id='notes-list' className='sidebar__notes-list'>
+        
         {notes.map( note => (
-          <div className='sidebar__note-item' key={note._id}  >
-            <div className='sidebar__note-item-name' onClick={()=>handleClick(note)}>{note.title}</div>
+          <div className='sidebar__note-item' key={note._id} onClick={()=>handleClick(note)} >
+            <div className='sidebar__note-item-name'>{note.title}</div>
+            
             <div className='sidebar__note-item-icon'>
-              <button onClick={()=>handleDelete(note._id!)}>
-                <IoOpenOutline />
+              <button 
+              onClick={()=>handleDelete(note._id!)}
+              >
+                <AiOutlineDelete />
               </button>
            </div>
           </div>

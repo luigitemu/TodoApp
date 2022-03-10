@@ -68,7 +68,8 @@ export const startAddingNewNote = (note: Note) => {
  }
 
  
- export const setActiveNote = (note: Note )=>({ type: 'setActiveNote', payload: note})
+ export const setActiveNote = (note: Note )=>({ type: 'setActiveNote', payload: note});
+ export const setActiveTodo = (todo: any )=>({ type: 'setActiveTodo', payload: todo});
  
  const loadNotes = (notes: [] ) => ({type: 'loadNotes', payload: notes })
  
