@@ -40,7 +40,6 @@ export const CustomModal = ({isOpen , closeModal , title} :Props ) => {
         if (name === '') return;
         const newTodo = activeTodo; 
         newTodo.name = name;
-        console.log(newTodo)
         const updateNote = activeNote!;
         updateNote.todos = updateNote.todos.map( todo => todo._id === newTodo._id? newTodo : todo);
         dispatch(startUpdatingNote(updateNote._id!, updateNote))

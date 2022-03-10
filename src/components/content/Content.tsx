@@ -46,7 +46,6 @@ export const Content = () => {
     };
     const handleDeleteTodo = (id: string) => {
         const noteUpdate = activeNote!;
-        console.log(noteUpdate.todos);
         noteUpdate.todos = noteUpdate.todos.filter((todo) => todo._id !== id);
         dispatch(startUpdatingNote(noteUpdate._id!, noteUpdate));
     };

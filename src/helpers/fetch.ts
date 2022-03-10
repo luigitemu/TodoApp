@@ -11,7 +11,6 @@ export const fetchWithOutToken = (endpoint: string, data: any, method = 'GET') =
 
         return fetch(url);
     } else {
-        console.log(data)
         return fetch(url, {
             method,
             headers: {
