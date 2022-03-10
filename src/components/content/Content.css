@@ -17,6 +17,7 @@
 
 .no-data-img {
     width: -webkit-fill-available;
+    height: -webkit-fill-available;
     overflow: hidden;
     display: flex;
     justify-content: center;

@@ -117,11 +117,11 @@ export const Content = () => {
                                     className='content__note-list-item'
                                     key={`${todo.name}-${idx}`}
                                 >
-                                    <div className='note-list-text' onClick={handleOnChange}>
+                                    <div className='note-list-text' >
                                         <input
                                             type='checkbox'
                                             checked={todo.isDone}
-                                            // onChange={handleOnChange}
+                                            onChange={handleOnChange}
                                             name={todo._id}
                                             id={todo._id}
                                             className='content__todo-check'
@@ -161,7 +161,7 @@ export const Content = () => {
                                 <div className='note-list-text' onClick={handleOnChange}>
                                     <input
                                         type='checkbox'
-                                        checked={todo.isDone}
+                                        defaultChecked={todo.isDone}
                                         // onChange={handleOnChange}
                                         name={todo._id}
                                         id={todo._id}

@@ -12,6 +12,7 @@ import { ProtectedRoute } from './ProtectedRoute';
 import { PublicRoute } from './PublicRoute';
 import { RootState } from '../reducers/rootReducer';
 import { RegisterPage } from '../pages/register/RegisterPage';
+import { Loading } from '../components/loading/Loading';
 
 export const RouterPage = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,17 @@ export const RouterPage = () => {
   
     
     if (checking) {
-        return <h1 > Loading... </h1>
+        return <div style={{
+          display: 'flex',  
+          height: '100vh',
+          width: '100vw',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: '#fff',
+          overflow: 'hidden'
+          }} >
+          <Loading/>
+        </div>
     }
   return (
     <Routes>

@@ -37,6 +37,25 @@ export const startLogin = (email: string, password: string) =>{
 
 }
 
+export const startRegisterUser = (email: string, name: string, password: string) => { 
+
+    return async (dispatch: any)=>  {
+        try {
+            const resp = await fetchWithOutToken('user', {email, name, password}, 'POST');
+            const body= await resp.json();
+            if(resp.ok) {
+                
+                dispatch(startLogin(body.user.email, password))
+            }else{
+                console.log(body)
+            }
+        } catch (error ) {
+            console.log(error)
+        }
+    }
+
+ }
+
 export const startChecking = () => {
     return async (dispatch: any) => {
         try {
