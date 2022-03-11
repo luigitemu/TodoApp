@@ -22,3 +22,15 @@
     padding: 0rem 10.5rem;
     padding-bottom: 8%;
 }
+
+
+@media screen and (max-width: 1024px) {
+	.register__container-form-register{
+		    width: 90%;
+			justify-items: center;
+			padding: 0;
+			padding-right: 21px;
+			padding-left: 44px;
+	}
+	
+}
