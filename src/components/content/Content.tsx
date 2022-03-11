@@ -59,9 +59,6 @@ export const Content = () => {
         setIsOpen(true);
         dispatch(setActiveTodo(todo));
     };
-    // const handleClickButton = (e: any ) => { 
-    //     toggleDrawer()
-    //  }
 
     const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 

@@ -41,6 +41,7 @@ export const startAddingNewNote = (note: Note) => {
             const body = await resp.json();
             if(resp.ok) {
                 dispatch(updateNote(body.note))
+                dispatch(setActiveNote(body.note))
             }
         } catch (error) {
             console.log(error);
