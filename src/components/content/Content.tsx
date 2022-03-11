@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Modal from "react-modal";
+
 import { IoIosAdd } from "react-icons/io";
-import { MdModeEdit } from "react-icons/md";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 import "./Content.css";
 import { RootState } from "../../reducers/rootReducer";
@@ -11,6 +11,7 @@ import { startUpdatingNote, setActiveTodo } from "../../action/notes";
 import { EditableInput } from "../EditableInput";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { CustomModal } from "../modal/CustomModal";
+import { CustomDrawer } from "../custon-drawer/CustomDrawer";
 
 export const Content = () => {
     const { activeNote, activeTodo } = useSelector(
@@ -18,6 +19,10 @@ export const Content = () => {
     );
     const [title, setTitle] = useState(activeNote?.title);
     const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+    const [isDrawerOpen, setDrawerIsOpen] = useState(false)
+    const toggleDrawer = () => {
+        setDrawerIsOpen((prevState) => !prevState)
+    }
 
     const dispatch = useDispatch();
 
@@ -54,6 +59,9 @@ export const Content = () => {
         setIsOpen(true);
         dispatch(setActiveTodo(todo));
     };
+    // const handleClickButton = (e: any ) => { 
+    //     toggleDrawer()
+    //  }
 
     const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
@@ -64,11 +72,23 @@ export const Content = () => {
                     Select a note from the sidebar to start working!
                 </span>
                 <img src={noImage} className='no-data-img' />
+                <div className="floating-container FAB" onClick={toggleDrawer}>
+                <div className="floating-button"> <GiHamburgerMenu/> </div>
+                <div className="element-container">
+                </div>
+            </div>
+            <CustomDrawer isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer}/>
             </div>
         );
     }
     return (
         <main id='content'>
+            <div className="floating-container FAB" onClick={toggleDrawer}>
+                <div className="floating-button"><GiHamburgerMenu/></div>
+                <div className="element-container">
+                <CustomDrawer isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer}/>
+                </div>
+            </div>
             <div>
                 <span style={{ display: "flex", flexDirection: "row" }}>
                     <EditableInput

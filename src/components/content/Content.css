@@ -77,11 +77,12 @@
 .content__note-list-header{
     display: flex;
     flex-direction: row;
-    justify-content: space-between
+    justify-content: space-between;
+    padding: 0 1rem;
 }
 .content__note-list-header svg{
     padding-top: 0px;
-    font-size: 25px;
+    font-size: 35px;
 }
 
 .content__note-list-header button{
@@ -90,11 +91,10 @@
     font-size: 25px;
     text-align: center;
     font-weight: 600;
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     border: 0;
     border-radius: 5px;
-    margin-right: 4px;
     margin-bottom: 6px;
 }
 .content__note-list-header button:hover{
@@ -108,6 +108,8 @@
     color: #343348;
     margin-bottom: 6px;
     margin-left: 4px;
+    width: -webkit-fill-available;
+    text-align: -webkit-left;
 }
 
 .content__note-list-colum {
@@ -115,6 +117,8 @@
     background: #F0F1F3;
     border-radius: 8px;
     padding: 6px 16px;
+
+    min-height: 3rem;
 }
 
 .content__note-list-item {
@@ -175,6 +179,154 @@ input[type=checkbox] {
 .content__note-list-buttons {
     text-align: -webkit-center;
 }
+.content__floating-action-button {
+    line-height: 12px;
+    width: 50px;
+    font-size: 8pt;
+    font-family: tahoma;
+    margin-bottom: 1px;
+    margin-right: 2px;
+    position:absolute;
+    bottom:0;
+    right:0;
+}
+@-webkit-keyframes come-in {
+    0% {
+      -webkit-transform: translatey(100px);
+              transform: translatey(100px);
+      opacity: 0;
+    }
+    30% {
+      -webkit-transform: translateX(-50px) scale(0.4);
+              transform: translateX(-50px) scale(0.4);
+    }
+    70% {
+      -webkit-transform: translateX(0px) scale(1.2);
+              transform: translateX(0px) scale(1.2);
+    }
+    100% {
+      -webkit-transform: translatey(0px) scale(1);
+              transform: translatey(0px) scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes come-in {
+    0% {
+      -webkit-transform: translatey(100px);
+              transform: translatey(100px);
+      opacity: 0;
+    }
+    30% {
+      -webkit-transform: translateX(-50px) scale(0.4);
+              transform: translateX(-50px) scale(0.4);
+    }
+    70% {
+      -webkit-transform: translateX(0px) scale(1.2);
+              transform: translateX(0px) scale(1.2);
+    }
+    100% {
+      -webkit-transform: translatey(0px) scale(1);
+              transform: translatey(0px) scale(1);
+      opacity: 1;
+    }
+  }
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  html, body {
+    background: #eaedf2;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .floating-container {
+    /* position: absolute;
+    width: 100px;
+    height: 100px;
+    bottom: 0;
+    right: 0;
+    margin: 35px 25px; */
+
+    position: fixed;
+    width: 70px;
+    height: 70px;
+    bottom: 0;
+    right: 0;
+    margin: 35px 25px;
+  }
+  .floating-container:hover {
+    height: 300px;
+  }
+  .floating-container:hover .floating-button {
+    box-shadow: 0 10px 25px rgb(100 63 219);
+    -webkit-transform: translatey(5px);
+            transform: translatey(5px);
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  .floating-container:hover .element-container .float-element:nth-child(1) {
+    -webkit-animation: come-in 0.4s forwards 0.2s;
+            animation: come-in 0.4s forwards 0.2s;
+  }
+  .floating-container:hover .element-container .float-element:nth-child(2) {
+    -webkit-animation: come-in 0.4s forwards 0.4s;
+            animation: come-in 0.4s forwards 0.4s;
+  }
+  .floating-container:hover .element-container .float-element:nth-child(3) {
+    -webkit-animation: come-in 0.4s forwards 0.6s;
+            animation: come-in 0.4s forwards 0.6s;
+  }
+  .floating-container .floating-button {
+    width: 65px;
+    height: 65px;
+    background: #643fdb;
+    border-radius: 50%;
+    color: white;
+    line-height: 72px;
+    text-align: center;
+    font-size: 28px;
+    z-index: 100;
+    box-shadow: 0 10px 25px -5px rgb(100 63 219);
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  .floating-container .float-element {
+    position: relative;
+    display: block;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 15px auto;
+    color: white;
+    font-weight: 500;
+    text-align: center;
+    line-height: 50px;
+    z-index: 0;
+    opacity: 0;
+    -webkit-transform: translateY(100px);
+            transform: translateY(100px);
+  }
+  .floating-container .float-element .material-icons {
+    vertical-align: middle;
+    font-size: 16px;
+  }
+  .floating-container .float-element:nth-child(1) {
+    background: #42A5F5;
+    box-shadow: 0 20px 20px -10px rgba(66, 165, 245, 0.5);
+  }
+  .floating-container .float-element:nth-child(2) {
+    background: #4CAF50;
+    box-shadow: 0 20px 20px -10px rgba(76, 175, 80, 0.5);
+  }
+  .floating-container .float-element:nth-child(3) {
+    background: #FF9800;
+    box-shadow: 0 20px 20px -10px rgba(255, 152, 0, 0.5);
+  }
+  
+  
+  
 
 @media screen and (max-width: 1024px) {
     .content__note-list-container {
@@ -183,8 +335,20 @@ input[type=checkbox] {
     .content__note-list-colum{
         width: 80vw;
     }
-    .content__note-list-header button{
-        margin-right: 2rem;
+
+    #content {
+        padding: 2rem 2rem;
+        text-align: -webkit-center;
+        /* ------------------------- */
+        position: absolute;
+        width: -webkit-fill-available;
+        padding-bottom: 10rem;
     }
     
+}
+
+@media screen and (min-width: 1024px){
+	.FAB{
+        display: none;
+    }
 }

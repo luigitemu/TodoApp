@@ -54,37 +54,6 @@ export const Sidebar = () => {
            </div>
           </div>
         ))}
-        
-        {/* <div className='sidebar__note-item'>
-          <div className='sidebar__note-item-name'>Cosas por hacer</div>
-          <div className='sidebar__note-item-icon'>
-            <IoOpenOutline />
-          </div>
-        </div>
-        <div className='sidebar__note-item'>
-          <div className='sidebar__note-item-name'>Lista de compras</div>
-          <div className='sidebar__note-item-icon'>
-            <IoOpenOutline />
-          </div>
-        </div>
-        <div className='sidebar__note-item'>
-          <div className='sidebar__note-item-name'>Materias por aprobar el siguiente semestre</div>
-          <div className='sidebar__note-item-icon'>
-            <IoOpenOutline />
-          </div>
-        </div>
-        <div className='sidebar__note-item'>
-          <div className='sidebar__note-item-name'>Proyecto TODO-List</div>
-          <div className='sidebar__note-item-sidebar__note-item-icon'>
-            <IoOpenOutline />
-          </div>
-        </div>
-        <div className='sidebar__note-item'>
-          <div className='sidebar__note-item-name'>Pitch video</div>
-          <div className='sidebar__note-item-icon'>
-            <IoOpenOutline />
-          </div>
-        </div> */}
 
       <button className='sidebar__logout-button' style={{bottom:55}} onClick={handleAdd}>
           <span className='sidebar__logout-label'>New Note</span>

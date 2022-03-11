@@ -50,11 +50,19 @@
     display: none;
 }
 .sidebar__note-item {
-	display: flex;
+	/* display: flex;
 	justify-content: space-between;
 	padding: 1rem 2rem;
 	border-bottom: 1px solid #4338561a;
-	border-radius: 5px;
+	border-radius: 5px; */
+
+	display: flex;
+    justify-content: flex-start;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #4338561a;
+    border-radius: 5px;
+    flex-direction: row;
+    align-items: center;
 
 }
 .sidebar__note-item:hover {
@@ -64,6 +72,7 @@
 
 .sidebar__note-item-name {
 	width: 11.5rem;
+	text-align: left;
 }
 
 .sidebar__note-item-icon {
